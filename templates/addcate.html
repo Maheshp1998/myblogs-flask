@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add-category</title>
+</head>
+<body>
+
+{% block content %}
+<center>
+    <form action="/addcate" method='POST'>
+        <table>
+            <tr>
+                <td>category_id</td>
+                <td><input type='text' name='category_id'></td>
+            </tr>
+            
+            <tr>
+                <td>category name</td>
+                <td><input type="text" name="category_name"></td>
+            </tr>
+        </table>
+        <p>
+            <input type='submit' value="addcategory"/>
+        </p>
+    </form>
+
+    <!-- <h3>Don't Have Account</h3>
+    <h3><a href="{{url_for ('register')}}">Register</a></h3> -->
+</center>
+{% endblock %}
+</body>
+</html>

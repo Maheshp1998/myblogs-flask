@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register user</title>
+</head>
+<body>
+{% block content %}
+
+    <br>
+    <br>
+<h5>
+    {{msg}}
+</h5>    <br>
+<div style="padding-left:200px;">
+    <h3>Signup Form</h3>
+    <form action="" method='POST'>
+        <table>
+            <tr>
+                <td>Email</td>
+                <td><input type='email' name='email' required></td>
+            </tr>
+            <tr>
+                <td>UserName</td>
+                <td><input name='username' required></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type='password' name='password' required></td>
+            </tr>
+        </table>
+        <p>
+            <input type='submit' value="register"/>
+        </p>
+    </form>
+
+    <h3>Already Have an Account?</h3>
+    <h3><a href="{{url_for ('login')}}">Login</a></h3>
+</div>
+
+{% endblock content %}
+    
+</body>
+</html>

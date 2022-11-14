@@ -1,0 +1,62 @@
+{% extends 'base.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>listof all_blogs</title>
+</head>
+<body>
+
+    {% block content%}
+        <style>
+            th{
+                background-color: aqua;
+            }
+            table, td, th{
+                border: 1px solid black; border-radius: 12px;
+            }
+        </style>
+    
+        {% if current_user.username == Null %}
+        <h3>Welcome Guest</h3>
+        {% else %}
+        <h3>Welcome {{current_user.username}}</h3>
+        {% endif %}
+    
+        <table>
+            <thead>
+                <th>
+                    Author
+                </th>
+                <th>
+                    Category
+                </th>
+                <th>Content</th>
+                <th>Rating</th>
+                <th>Read Count</th>
+            </thead>
+            <tbody>
+                {% for a_blog in all_blogs %}
+                <tr>
+                    <td>{{ all_users[a_blog.blog_user_id-1].username}}</td>
+                    <td>{{ all_categories[a_blog.category_id] }}</td>
+                    {% if current_user.is_authenticated %}
+                    <td> <a href="/blogDetail/{{a_blog.id}}/{{all_users[a_blog.blog_user_id-1].username}}/{{ all_categories[a_blog.category_id] }}">{{ a_blog.blog_text|safe|truncate(275) }}</a></td>
+                    {% else %}
+                    <td><a href="/listAllBlogs">{{ a_blog.blog_text|safe|truncate(275) }}</a></td>
+                    {% endif %}
+                    <td>{{ a_blog.blog_rating_count }}</td>
+                    <td>{{ a_blog.blog_read_count }}</td>
+                </tr>
+               {% endfor%}
+            </tbody>
+        </table>
+    {% endblock %}
+</body>
+</html>
+
+
+
+inpu
