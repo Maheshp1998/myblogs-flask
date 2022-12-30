@@ -47,7 +47,10 @@ def register():
             return "Email Already Exists"
         
         user = UserModel(email=email,username=username)
+        a=user.set_password(password)
+        print("888888888888888888888888888888888",a)
         user.set_password(password)
+        
         db.session.add(user)
         db.session.commit()
         # return redirect('/blogs')
@@ -77,6 +80,8 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
         user = UserModel.query.filter_by(email=email).first()
+        a= user.check_password(request.form.get('password'))
+        print("-------------------------------------->>>>>>>",a)
         if user is not None and user.check_password(request.form.get('password')):
             login_user(user)
             return render_template('blogs_home.html')
